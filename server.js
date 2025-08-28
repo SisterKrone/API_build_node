@@ -4,6 +4,7 @@ import createUsers from './routes/create-users.js';
 import updateUsers from './routes/update-users.js';
 import deleteUsers from './routes/delete-users.js';
 import pkg from './generated/prisma/index.js';
+import cors from 'cors'
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient()
@@ -11,7 +12,7 @@ const app = express();
 
 // Middleware para interpretar JSON (se precisar)
 app.use(express.json());
-
+app.use(cors())
 
 app.use(getUsers);
 app.use(createUsers)
